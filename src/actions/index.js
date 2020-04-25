@@ -1,7 +1,12 @@
 import SpotifyWebApi from "spotify-web-api-js";
 
 //import history from "../history";
-import { GET_USER_PLAYLISTS, SET_TOKEN_STATUS } from "./types";
+import {
+  GET_USER_PLAYLISTS,
+  GET_PLAYLIST_TRACKS,
+  SET_TOKEN_STATUS,
+} from "./types";
+import playlistTracksReducer from "../reducers/tracks/playlistTracksReducer";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -16,11 +21,18 @@ export const setTokenStatus = (token, status) => async (dispatch) => {
 };
 
 //action creator
-export const getUserPlaylists = () => async () => {
+//this must be async because we have to wait for response to be receive the data
+export const getUserPlaylists = () => async (dispatch) => {
   const response = await spotifyApi.getUserPlaylists();
-  console.log(response);
+
+  dispatch({ type: GET_USER_PLAYLISTS, payload: response.items });
+};
+
+//action creator
+export const getPlaylistTracks = (id) => async (dispatch) => {
+  const response = await spotifyApi.getPlaylistTracks(id);
 
   //dispatch to reducer
-  return { type: GET_USER_PLAYLISTS, payload: response.data };
-  //history.push(`/list/search/results/${searchTerm}`);
+  //must dispatch with using redux thunk middleware since we are giving the reducer a promise
+  dispatch({ type: GET_PLAYLIST_TRACKS, payload: response });
 };

@@ -1,41 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, Link } from "react-router-dom";
 
 import { setTokenStatus } from "../actions";
 
 import history from "../history";
 import SpotifyWebApi from "spotify-web-api-js";
 
+import UserPlaylists from "./playlists/UserPlaylists";
+import playlist from "./playlists/playlist";
+import AudioPlayer from "./AudioPlayer/Player";
+
 const spotifyApi = new SpotifyWebApi();
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const params = this.getHashParams();
-    const token = params.token;
-    const isLoggedIn = token ? true : false;
-    if (token) {
-      //spotify-web-api-library needs the token to use library methods to request to the api
-      spotifyApi.setAccessToken(token);
+    if (!sessionStorage.getItem("token")) {
+      const params = this.getHashParams();
+      const token = params.token;
+      const isLoggedIn = token ? true : false;
+      if (token) {
+        // sessionStorage.setItem("token", token);
+        //spotify-web-api-library needs the token to use library methods to request to the api
+        spotifyApi.setAccessToken(token);
 
-      //action creator
-      //update status
-      this.props.setTokenStatus(token, isLoggedIn);
-      this.getUserPlaylists();
+        //action creator
+        //update status
+        this.props.setTokenStatus(token, isLoggedIn);
+      }
     }
+    //spotifyApi.setAccessToken(sessionStorage.getItem("token"));
   }
-
-  //this must be async because we have to wait for playlists to be received
-  getUserPlaylists = async () => {
-    const playlists = await spotifyApi.getUserPlaylists();
-    //anything below await will not run until playlists has a value
-    playlists.items.map((playlist) => {
-      console.log(playlist);
-    });
-
-    //spotifyApi.getPlaylistTracks(playlistId, options, callback);
-  };
 
   //get hash params for token
   getHashParams() {
@@ -59,7 +55,12 @@ class App extends React.Component {
       <HashRouter history={history}>
         <div className="main">
           <a href="http://localhost:8888"> Login to Spotify </a>
-          <Switch>{/*<Route path="/" exact component={Home} />*/}</Switch>
+          <Link to={"/"}>UserPlaylists</Link>
+          <Switch>
+            <Route path="/" exact component={UserPlaylists} />
+            <Route path="/playlist/:name" exact component={playlist} />
+          </Switch>
+          <AudioPlayer />
         </div>
       </HashRouter>
     );
