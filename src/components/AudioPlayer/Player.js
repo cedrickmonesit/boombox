@@ -6,6 +6,7 @@ import "react-h5-audio-player/lib/styles.css";
 import { getPlaylistTracks } from "../../actions";
 
 class Player extends React.Component {
+  //setstate before component mounts
   constructor(props) {
     super(props);
 
@@ -15,9 +16,11 @@ class Player extends React.Component {
     };
   }
 
+  //if props are different from previos props reset currentmusicindex and set new playlist
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      console.log("updated selected locations");
+      this.setState({ currentMusicIndex: 0 });
+      this.setState({ currentMusicIndex: this.props.currentMusicIndex });
       this.setState({ playlist: this.renderTracks(this.props.tracks) });
     }
   }
@@ -60,6 +63,8 @@ class Player extends React.Component {
     });
   };
 
+  //if the current index is not equal to playlist length minus 1, add 1 to curentmusicindex
+  //else return currentmusicindex
   handleClickNext = () => {
     console.log(this.state.playlist.length);
     this.setState({
@@ -79,9 +84,9 @@ class Player extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props.currentMusicIndex);
     return (
-      <React.Fragment>
+      <div>
         <div>AudioPlayer</div>
         <AudioPlayer
           autoPlayAfterSrcChange={true}
@@ -91,7 +96,7 @@ class Player extends React.Component {
           onClickPrevious={this.handleClickPrevious}
           onClickNext={this.handleClickNext}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -99,6 +104,7 @@ class Player extends React.Component {
 const mapStateToProps = (state) => {
   return {
     tracks: state.playlistsTracks.items,
+    currentMusicIndex: state.currentMusicIndex,
   };
 };
 
