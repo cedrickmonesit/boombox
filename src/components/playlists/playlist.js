@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { getUserPlaylists, getPlaylistTracks } from "../../actions";
+import {
+  getUserPlaylists,
+  getPlaylistTracks,
+  setCurrentMusicIndex,
+} from "../../actions";
 
 class playlist extends React.Component {
   componentDidMount() {
@@ -14,15 +18,31 @@ class playlist extends React.Component {
     });
   }
 
+  //map through tracks and return track jsx
   renderTracks = (tracks) => {
+    //map through tracks making a new array from the playlist that was fetch from api
     if (tracks) {
-      return tracks.map((track) => {
+      const x = tracks.map((track) => {
         if (track.track.preview_url) {
-          return <div key={track.track.id}>{track.track.name}</div>;
+          return track;
         }
         return null;
       });
+      //if track is not null add it to the new array
+      const y = x.filter((track) => {
+        return track != null;
+      });
+      //map through the filtered array return track jsx
+      return y.map((track, index) => {
+        return (
+          <div id={index} key={track.track.id}>
+            {track.track.name}
+          </div>
+        );
+      });
     }
+    //this will only happen if the playlist match the params name and will fetch the new playlist
+    //get tracks of playlist that matches the name of the playlist selected
     this.props.playlists.map((playlist) => {
       if (playlist.name === this.props.match.params.name) {
         this.props.getPlaylistTracks(playlist.id);
@@ -30,10 +50,19 @@ class playlist extends React.Component {
     });
   };
 
+  handlePlaylistClick = (e) => {
+    if (e.target.id) {
+      console.log(e.target.id);
+      this.props.setCurrentMusicIndex(e.target.id);
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
-        <div>playlist: {this.renderTracks(this.props.tracks.items)}</div>
+        <div onClickCapture={this.handlePlaylistClick}>
+          playlist: {this.renderTracks(this.props.tracks.items)}
+        </div>
       </React.Fragment>
     );
   }
@@ -49,4 +78,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getUserPlaylists,
   getPlaylistTracks,
+  setCurrentMusicIndex,
 })(playlist);

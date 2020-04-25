@@ -5,8 +5,8 @@ import {
   GET_USER_PLAYLISTS,
   GET_PLAYLIST_TRACKS,
   SET_TOKEN_STATUS,
+  SET_CURRENT_MUSIC_INDEX,
 } from "./types";
-import playlistTracksReducer from "../reducers/tracks/playlistTracksReducer";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -35,4 +35,11 @@ export const getPlaylistTracks = (id) => async (dispatch) => {
   //dispatch to reducer
   //must dispatch with using redux thunk middleware since we are giving the reducer a promise
   dispatch({ type: GET_PLAYLIST_TRACKS, payload: response });
+};
+
+//action creator
+export const setCurrentMusicIndex = (index) => (dispatch) => {
+  const response = index;
+
+  dispatch({ type: SET_CURRENT_MUSIC_INDEX, payload: response });
 };

@@ -22,13 +22,6 @@ class UserPlaylists extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <button
-          onClick={() => {
-            localStorage.clear();
-          }}
-        >
-          Clear
-        </button>
         <div>Playlists: {this.getPlaylists()} </div>
       </React.Fragment>
     );

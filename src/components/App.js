@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { HashRouter, Route, Switch, Link } from "react-router-dom";
 
-import { setTokenStatus } from "../actions";
+import { setTokenStatus, setCurrentMusicIndex } from "../actions";
 
 import history from "../history";
 import SpotifyWebApi from "spotify-web-api-js";
