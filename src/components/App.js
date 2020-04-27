@@ -10,26 +10,34 @@ import SpotifyWebApi from "spotify-web-api-js";
 import UserPlaylists from "./playlists/UserPlaylists";
 import playlist from "./playlists/playlist";
 import AudioPlayer from "./AudioPlayer/Player";
+import Searchbar from "./searchbar/Searchbar";
 
 const spotifyApi = new SpotifyWebApi();
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    if (!sessionStorage.getItem("token")) {
-      const params = this.getHashParams();
-      const token = params.token;
-      const isLoggedIn = token ? true : false;
-      if (token) {
-        // sessionStorage.setItem("token", token);
-        //spotify-web-api-library needs the token to use library methods to request to the api
-        spotifyApi.setAccessToken(token);
+    const params = this.getHashParams();
+    const token = params.token;
 
-        //action creator
-        //update status
-        this.props.setTokenStatus(token, isLoggedIn);
-      }
+    //const isLoggedIn = token ? true : false;
+    //set new token when signin
+    if (token) {
+      localStorage.setItem("token", token);
+
+      // sessionStorage.setItem("token", token);
+      //spotify-web-api-library needs the token to use library methods to request to the api
+      spotifyApi.setAccessToken(localStorage.getItem("token"));
+
+      //action creator
+      //update status
+      //this.props.setTokenStatus(token, isLoggedIn);
+      //set token on refresh
+    } else if (localStorage.getItem("token")) {
+      //set token for api library use
+      spotifyApi.setAccessToken(localStorage.getItem("token"));
     }
+
     //spotifyApi.setAccessToken(sessionStorage.getItem("token"));
   }
 
@@ -54,6 +62,7 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
+          <Searchbar />
           <a href="http://localhost:8888"> Login to Spotify </a>
           <Link to={"/"}>UserPlaylists</Link>
           <Switch>

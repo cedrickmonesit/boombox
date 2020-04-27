@@ -50,14 +50,18 @@ class playlist extends React.Component {
     });
   };
 
+  //set currentmusicindex with a click this lets us play the music track that was clicked
   handlePlaylistClick = (e) => {
     if (e.target.id) {
       console.log(e.target.id);
+
+      //set currentmusicindex in redux store
       this.props.setCurrentMusicIndex(e.target.id);
     }
   };
 
   render() {
+    //event bubbling capture onclick event and get target id for currentmusicindex
     return (
       <React.Fragment>
         <div onClickCapture={this.handlePlaylistClick}>

@@ -7,3 +7,6 @@ export const SET_TOKEN_STATUS = "SET_TOKEN_STATUS";
 
 //current music index
 export const SET_CURRENT_MUSIC_INDEX = "SET_CURRENT_MUSIC_INDEX";
+
+//search results
+export const GET_SEARCH_RESULTS = "GET_SEARCH_RESULTS";

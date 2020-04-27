@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
-import { getPlaylistTracks } from "../../actions";
+import { getPlaylistTracks, setCurrentMusicIndex } from "../../actions";
 
 class Player extends React.Component {
   //setstate before component mounts
@@ -19,8 +19,19 @@ class Player extends React.Component {
   //if props are different from previos props reset currentmusicindex and set new playlist
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      this.setState({ currentMusicIndex: 0 });
-      this.setState({ currentMusicIndex: this.props.currentMusicIndex });
+      //set currentmusicindex to 0
+      //this.setState({ currentMusicIndex: 0 });
+
+      //if there is a currentmusicindex it will set this to that index
+      //this lets us click on a track in a playlist to play on the player
+      //if there are new playlist of tracks reset index to 0
+      this.setState({
+        currentMusicIndex:
+          this.props.tracks !== prevProps.tracks
+            ? 0
+            : parseInt(this.props.currentMusicIndex),
+      });
+
       this.setState({ playlist: this.renderTracks(this.props.tracks) });
     }
   }
@@ -66,25 +77,24 @@ class Player extends React.Component {
   //if the current index is not equal to playlist length minus 1, add 1 to curentmusicindex
   //else return currentmusicindex
   handleClickNext = () => {
-    console.log(this.state.playlist.length);
     this.setState({
       currentMusicIndex:
         this.state.currentMusicIndex !== this.state.playlist.length - 1
           ? this.state.currentMusicIndex + 1
           : this.state.currentMusicIndex,
     });
+    console.log(this.state.currentMusicIndex);
   };
 
   //if audio source is empty return undefined
   //this stops the audioplayer from throwing an undefined error at a certain index
-  renderAudioSource() {
+  renderAudioSource = () => {
     if (this.state.playlist.length > 0) {
       return this.state.playlist[this.state.currentMusicIndex].src;
     }
-  }
+  };
 
   render() {
-    console.log(this.props.currentMusicIndex);
     return (
       <div>
         <div>AudioPlayer</div>
@@ -110,4 +120,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   getPlaylistTracks,
+  setCurrentMusicIndex,
 })(Player);
