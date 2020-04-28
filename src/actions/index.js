@@ -1,4 +1,5 @@
 import SpotifyWebApi from "spotify-web-api-js";
+import history from "../history";
 
 //import history from "../history";
 import {
@@ -6,6 +7,7 @@ import {
   GET_PLAYLIST_TRACKS,
   SET_TOKEN_STATUS,
   SET_CURRENT_MUSIC_INDEX,
+  GET_SEARCH_RESULTS,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -42,4 +44,13 @@ export const setCurrentMusicIndex = (index) => (dispatch) => {
   const response = index;
 
   dispatch({ type: SET_CURRENT_MUSIC_INDEX, payload: response });
+};
+
+//action creator
+//this must be async because we have to wait for response to be receive the data
+export const getSearchResults = (searchterm, types) => async (dispatch) => {
+  const response = await spotifyApi.search(searchterm, types);
+
+  dispatch({ type: GET_SEARCH_RESULTS, payload: response });
+  history.push("/search/results");
 };
