@@ -7,6 +7,9 @@ import {
   setCurrentMusicIndex,
 } from "../../actions";
 
+import AudioPlayer from "../AudioPlayer/Player";
+import "./playlist.scss";
+
 class playlist extends React.Component {
   componentDidMount() {
     //id of playlist
@@ -35,7 +38,7 @@ class playlist extends React.Component {
       //map through the filtered array return track jsx
       return y.map((track, index) => {
         return (
-          <div id={index} key={track.track.id}>
+          <div className="playlist-track" id={index} key={track.track.id}>
             {track.track.name}
           </div>
         );
@@ -60,6 +63,15 @@ class playlist extends React.Component {
     }
   };
 
+  //make new array with tracks without track key
+  maptracks = (tracks) => {
+    if (tracks) {
+      return tracks.map((track) => {
+        return track.track;
+      });
+    }
+  };
+
   render() {
     //event bubbling capture onclick event and get target id for currentmusicindex
     return (
@@ -67,6 +79,7 @@ class playlist extends React.Component {
         <div onClickCapture={this.handlePlaylistClick}>
           playlist: {this.renderTracks(this.props.tracks.items)}
         </div>
+        <AudioPlayer tracks={this.maptracks(this.props.tracks.items)} />
       </React.Fragment>
     );
   }

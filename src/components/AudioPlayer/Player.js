@@ -4,6 +4,7 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
 import { getPlaylistTracks, setCurrentMusicIndex } from "../../actions";
+import "./player.scss";
 
 class Player extends React.Component {
   //setstate before component mounts
@@ -12,7 +13,7 @@ class Player extends React.Component {
 
     this.state = {
       currentMusicIndex: 0,
-      playlist: [],
+      playlist: this.renderTracks(this.props.tracks),
     };
   }
 
@@ -42,10 +43,10 @@ class Player extends React.Component {
   renderTracks = (tracks) => {
     if (tracks) {
       const playlist = tracks.map((track) => {
-        if (track.track.preview_url) {
+        if (track.preview_url) {
           return {
-            title: track.track.name,
-            src: track.track.preview_url,
+            title: track.name,
+            src: track.preview_url,
           };
         }
         return null;
@@ -97,8 +98,8 @@ class Player extends React.Component {
   render() {
     return (
       <div>
-        <div>AudioPlayer</div>
         <AudioPlayer
+          className="audio-player"
           autoPlayAfterSrcChange={true}
           showSkipControls={true}
           showJumpControls={false}
@@ -113,7 +114,7 @@ class Player extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    tracks: state.playlistsTracks.items,
+    // tracks: state.playlistsTracks.items,
     currentMusicIndex: state.currentMusicIndex,
   };
 };
