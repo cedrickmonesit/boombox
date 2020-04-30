@@ -2,16 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { HashRouter, Route, Switch, Link } from "react-router-dom";
 
-import { setTokenStatus, setCurrentMusicIndex } from "../actions";
+import { setTokenStatus } from "../actions";
 
 import history from "../history";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import UserPlaylists from "./playlists/UserPlaylists";
 import Playlist from "./playlists/Playlist";
-import AudioPlayer from "./AudioPlayer/Player";
 import Searchbar from "./searchbar/Searchbar";
 import SearchResults from "./searchresults/SearchResults";
+import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -71,7 +71,6 @@ class App extends React.Component {
             <Route path="/playlist/:name" exact component={Playlist} />
             <Route path="/search/results" exact component={SearchResults} />
           </Switch>
-          <AudioPlayer />
         </div>
       </HashRouter>
     );
