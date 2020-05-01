@@ -1,4 +1,28 @@
 .playlist-track {
-  border-top: solid black 1px;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .playlist-track-summary {
+    padding: 1rem;
+    pointer-events: none;
+  }
+
+  img,
+  p {
+    margin: 0;
+
+    //prevents blocking events of div
+    pointer-events: none;
+  }
+
+  img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 6rem;
+  }
 }

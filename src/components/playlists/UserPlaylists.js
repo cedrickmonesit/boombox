@@ -1,19 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getUserPlaylists } from "../../actions";
+import "./userplaylist.scss";
+import history from "../../history";
 
 class UserPlaylists extends React.Component {
   componentDidMount() {
     this.props.getUserPlaylists();
   }
 
+  onClickNavPlaylist = (name) => {
+    history.push(`/playlist/${name}`);
+  };
+
   getPlaylists() {
     return this.props.userPlaylists.map((playlist) => {
       return (
-        <div key={playlist.id}>
-          <Link to={`/playlist/${playlist.name}`}>{playlist.name}</Link>
+        <div
+          className="main-user-playlists"
+          onClick={() => {
+            this.onClickNavPlaylist(playlist.name);
+          }}
+          key={playlist.id}
+        >
+          <img src={playlist.images[1].url} alt={playlist.name} />
+          <p>{playlist.name}</p>
         </div>
       );
     });
