@@ -10,3 +10,9 @@ export const SET_CURRENT_MUSIC_INDEX = "SET_CURRENT_MUSIC_INDEX";
 
 //search results
 export const GET_SEARCH_RESULTS = "GET_SEARCH_RESULTS";
+
+//new releases
+export const GET_NEW_RELEASES = "GET_NEW_RELEASES";
+
+//Featured Playlists
+export const GET_FEATURED_PLAYLISTS = "GET_FEATURED_PLAYLISTS";
