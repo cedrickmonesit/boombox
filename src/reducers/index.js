@@ -15,6 +15,14 @@ import setCurrentMusicIndex from "./currentMusicIndex/currentMusicIndexReducer";
 //search results
 import searchResultsReducer from "./searchResults.js/searchResultsReducer";
 
+//new releases
+import newReleasesReducer from "./newReleases/newReleasesReducer";
+
+//featured playlists
+import featuredPlaylistsReducer from "./featuredPlaylists/featuredPlaylistsReducer";
+
+//featured playlists
+
 //take reducer put it inside to combineReducers
 export default combineReducers({
   userPlaylists: userPlaylistsReducer,
@@ -22,4 +30,6 @@ export default combineReducers({
   tokenStatus: tokenStatus,
   currentMusicIndex: setCurrentMusicIndex,
   searchResults: searchResultsReducer,
+  newReleasesAlbums: newReleasesReducer,
+  featuredPlaylists: featuredPlaylistsReducer,
 });

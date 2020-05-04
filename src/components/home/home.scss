@@ -1,0 +1,17 @@
+.grid-container {
+  margin-bottom: 6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 10rem); //auto fill will leave empty cells
+  grid-template-rows: repeat(
+    auto-fit,
+    10rem
+  ); //auto fit will center cells and will share empty cells to center
+  grid-gap: 25px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.home-album-img {
+  width: 10rem;
+}

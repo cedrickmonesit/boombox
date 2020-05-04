@@ -1,14 +1,19 @@
 .main-user-playlists {
   display: flex;
-  margin: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
   cursor: pointer;
+
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  border-bottom: solid #f7f7f7 1px;
 
   p {
     display: flex;
     padding: 0 1rem;
     align-items: center;
     margin: 0;
-    color: black;
+    color: #f7f7f7;
   }
 
   img {

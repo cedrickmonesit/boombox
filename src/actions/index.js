@@ -8,6 +8,8 @@ import {
   SET_TOKEN_STATUS,
   SET_CURRENT_MUSIC_INDEX,
   GET_SEARCH_RESULTS,
+  GET_NEW_RELEASES,
+  GET_FEATURED_PLAYLISTS,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -53,4 +55,18 @@ export const getSearchResults = (searchterm, types) => async (dispatch) => {
 
   dispatch({ type: GET_SEARCH_RESULTS, payload: response });
   history.push("/search/results");
+};
+
+//action creator
+export const getNewReleases = () => async (dispatch) => {
+  const response = await spotifyApi.getNewReleases();
+
+  dispatch({ type: GET_NEW_RELEASES, payload: response });
+};
+
+//action creator
+export const getFeaturedPlaylists = () => async (dispatch) => {
+  const response = await spotifyApi.getFeaturedPlaylists();
+
+  dispatch({ type: GET_FEATURED_PLAYLISTS, payload: response });
 };
