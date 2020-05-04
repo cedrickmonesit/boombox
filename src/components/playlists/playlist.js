@@ -20,6 +20,7 @@ class playlist extends React.Component {
       if (playlist.name === this.props.match.params.name) {
         this.props.getPlaylistTracks(playlist.id);
       }
+      return null;
     });
   }
 
@@ -54,7 +55,7 @@ class playlist extends React.Component {
       return y.map((track, index) => {
         return (
           <div className="playlist-track" id={index} key={track.track.id}>
-            <img src={track.track.album.images[1].url} />
+            <img src={track.track.album.images[1].url} alt={track.track.name} />
             <div className="playlist-track-summary">
               <p>{track.track.name} </p>
               <p>{this.mapArtists(track.track.artists)}</p>
@@ -69,6 +70,7 @@ class playlist extends React.Component {
       if (playlist.name === this.props.match.params.name) {
         this.props.getPlaylistTracks(playlist.id);
       }
+      return null;
     });
   };
 

@@ -1,10 +1,12 @@
 .main-user-playlists {
   display: flex;
-  padding: 1rem;
+  margin: 1rem;
   cursor: pointer;
 
   p {
-    padding: 1.3rem;
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
     margin: 0;
     color: black;
   }

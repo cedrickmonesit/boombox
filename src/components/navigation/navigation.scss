@@ -1,0 +1,35 @@
+.main-nav {
+  position: fixed;
+  bottom: 0;
+  background: #95389e;
+  width: 100vw;
+  height: 5rem;
+
+  .nav-home-icon {
+    color: #f7f7f7;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+  }
+
+  .nav-search-icon {
+    color: #f7f7f7;
+    font-size: 1.9rem;
+  }
+
+  .nav-library-icon {
+    color: #f7f7f7;
+    font-size: 2.2rem;
+    margin-right: 2rem;
+  }
+
+  .main-nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

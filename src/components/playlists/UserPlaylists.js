@@ -34,7 +34,7 @@ class UserPlaylists extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>Playlists: {this.getPlaylists()} </div>
+        <div> {this.getPlaylists()} </div>
       </React.Fragment>
     );
   }
