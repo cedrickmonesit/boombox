@@ -102,10 +102,11 @@ class Player extends React.Component {
           className="audio-player"
           autoPlayAfterSrcChange={true}
           showSkipControls={true}
-          showJumpControls={false}
+          showJumpControls={true}
           src={this.renderAudioSource()}
           onClickPrevious={this.handleClickPrevious}
           onClickNext={this.handleClickNext}
+          layout={this.props.layout}
         />
       </div>
     );

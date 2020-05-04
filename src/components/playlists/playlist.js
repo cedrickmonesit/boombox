@@ -14,11 +14,27 @@ class playlist extends React.Component {
   componentDidMount() {
     //id of playlist
     this.props.getUserPlaylists();
+
+    //if the name of playlist matches it will take the matched playlist id and fetch the tracks for the matched playlist
     this.props.playlists.map((playlist) => {
       if (playlist.name === this.props.match.params.name) {
         this.props.getPlaylistTracks(playlist.id);
       }
+      return null;
     });
+  }
+
+  //map through artists
+  //to render in rendertracks method
+  mapArtists(artists) {
+    if (artists) {
+      return artists.map((artist) => {
+        if (artists.length > 1) {
+          return `${artist.name} | `;
+        }
+        return artist.name;
+      });
+    }
   }
 
   //map through tracks and return track jsx
@@ -39,7 +55,11 @@ class playlist extends React.Component {
       return y.map((track, index) => {
         return (
           <div className="playlist-track" id={index} key={track.track.id}>
-            {track.track.name}
+            <img src={track.track.album.images[1].url} alt={track.track.name} />
+            <div className="playlist-track-summary">
+              <p>{track.track.name} </p>
+              <p>{this.mapArtists(track.track.artists)}</p>
+            </div>
           </div>
         );
       });
@@ -50,6 +70,7 @@ class playlist extends React.Component {
       if (playlist.name === this.props.match.params.name) {
         this.props.getPlaylistTracks(playlist.id);
       }
+      return null;
     });
   };
 
@@ -77,7 +98,7 @@ class playlist extends React.Component {
     return (
       <React.Fragment>
         <div onClickCapture={this.handlePlaylistClick}>
-          playlist: {this.renderTracks(this.props.tracks.items)}
+          {this.renderTracks(this.props.tracks.items)}
         </div>
         <AudioPlayer tracks={this.maptracks(this.props.tracks.items)} />
       </React.Fragment>

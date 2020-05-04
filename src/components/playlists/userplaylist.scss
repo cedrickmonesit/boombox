@@ -1,0 +1,17 @@
+.main-user-playlists {
+  display: flex;
+  margin: 1rem;
+  cursor: pointer;
+
+  p {
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
+    margin: 0;
+    color: black;
+  }
+
+  img {
+    width: 6rem;
+  }
+}

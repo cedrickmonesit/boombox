@@ -11,6 +11,7 @@ import UserPlaylists from "./playlists/UserPlaylists";
 import Playlist from "./playlists/Playlist";
 import Searchbar from "./searchbar/Searchbar";
 import SearchResults from "./searchresults/SearchResults";
+import Navigation from "./navigation/Navigation";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -68,9 +69,11 @@ class App extends React.Component {
           <Link to={"/"}>UserPlaylists</Link>
           <Switch>
             <Route path="/" exact component={UserPlaylists} />
-            <Route path="/playlist/:name" exact component={Playlist} />
             <Route path="/search/results" exact component={SearchResults} />
+            <Route path="/playlists" exact component={UserPlaylists} />
+            <Route path="/playlist/:name" exact component={Playlist} />
           </Switch>
+          <Navigation />
         </div>
       </HashRouter>
     );
