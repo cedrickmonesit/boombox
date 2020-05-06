@@ -8,8 +8,7 @@ import history from "../history";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import UserPlaylists from "./playlists/UserPlaylists";
-import Playlist from "./playlists/Playlist";
-import Searchbar from "./searchbar/Searchbar";
+import Playlist from "./playlists/playlist";
 import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
@@ -55,6 +54,7 @@ class App extends React.Component {
       hashParams[e[1]] = decodeURIComponent(e[2]);
       e = r.exec(q);
     }
+    history.push("/");
     return hashParams;
   }
 
@@ -65,9 +65,7 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
-          <Searchbar />
           <a href="http://localhost:8888"> Login to Spotify </a>
-          <Link to={"/"}>UserPlaylists</Link>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/search/results" exact component={SearchResults} />
