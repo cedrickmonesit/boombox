@@ -21,7 +21,8 @@ import newReleasesReducer from "./newReleases/newReleasesReducer";
 //featured playlists
 import featuredPlaylistsReducer from "./featuredPlaylists/featuredPlaylistsReducer";
 
-//featured playlists
+//album
+import albumReducer from "./album/albumTracksReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -32,4 +33,5 @@ export default combineReducers({
   searchResults: searchResultsReducer,
   newReleasesAlbums: newReleasesReducer,
   featuredPlaylists: featuredPlaylistsReducer,
+  albumTracks: albumReducer,
 });

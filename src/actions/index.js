@@ -10,6 +10,7 @@ import {
   GET_SEARCH_RESULTS,
   GET_NEW_RELEASES,
   GET_FEATURED_PLAYLISTS,
+  GET_ALBUM_TRACKS,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -33,6 +34,7 @@ export const getUserPlaylists = () => async (dispatch) => {
 };
 
 //action creator
+//playlist tracks
 export const getPlaylistTracks = (id) => async (dispatch) => {
   const response = await spotifyApi.getPlaylistTracks(id);
 
@@ -69,4 +71,12 @@ export const getFeaturedPlaylists = () => async (dispatch) => {
   const response = await spotifyApi.getFeaturedPlaylists();
 
   dispatch({ type: GET_FEATURED_PLAYLISTS, payload: response });
+};
+
+//get albums
+//action creator
+export const getAlbumTracks = (id) => async (dispatch) => {
+  const response = await spotifyApi.getAlbumTracks(id);
+
+  dispatch({ type: GET_ALBUM_TRACKS, payload: response });
 };

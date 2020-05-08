@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getNewReleases, getFeaturedPlaylists } from "../../actions";
 
@@ -16,12 +17,13 @@ class Home extends React.Component {
       return this.props.newReleasesAlbums.items.map((album) => {
         return album.images.map((image) => {
           return (
-            <img
-              className="home-album-img"
-              key={album.id}
-              src={image.url}
-              alt={album.name}
-            />
+            <Link key={album.id} to={`/album/${album.id}`}>
+              <img
+                className="home-album-img"
+                src={image.url}
+                alt={album.name}
+              />
+            </Link>
           );
         });
       });
@@ -29,8 +31,10 @@ class Home extends React.Component {
     return "";
   };
 
+  renderFeaturedPlaylists = () => {};
+
   render() {
-    this.renderAlbums();
+    console.log(this.props.featuredPlaylists, this.props.newReleasesAlbums);
     return <div className="grid-container">{this.renderAlbums()}</div>;
   }
 }

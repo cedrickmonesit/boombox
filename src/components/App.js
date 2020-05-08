@@ -12,6 +12,7 @@ import Playlist from "./playlists/playlist";
 import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
+import Album from "./album/Album";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -71,6 +72,7 @@ class App extends React.Component {
             <Route path="/search/results" exact component={SearchResults} />
             <Route path="/playlists" exact component={UserPlaylists} />
             <Route path="/playlist/:name" exact component={Playlist} />
+            <Route path="/album/:id" exact component={Playlist} />
           </Switch>
           <Navigation />
         </div>
