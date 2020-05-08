@@ -22,6 +22,11 @@ class playlist extends React.Component {
       }
       return null;
     });
+
+    const id = this.props.match.params.id;
+    if (id) {
+      this.props.getPlaylistTracks(id);
+    }
   }
 
   //map through artists

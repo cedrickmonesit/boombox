@@ -16,3 +16,6 @@ export const GET_NEW_RELEASES = "GET_NEW_RELEASES";
 
 //Featured Playlists
 export const GET_FEATURED_PLAYLISTS = "GET_FEATURED_PLAYLISTS";
+
+//Album
+export const GET_ALBUM_TRACKS = "GET_ALBUM_TRACKS";
