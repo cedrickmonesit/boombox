@@ -5,6 +5,19 @@ import { setCurrentMusicIndex } from "../../actions";
 import AudioPlayer from "../AudioPlayer/Player";
 
 class SearchResults extends React.Component {
+  //map through artists
+  //to render in rendertracks method
+  mapArtists(artists) {
+    if (artists) {
+      return artists.map((artist) => {
+        if (artists.length > 1) {
+          return `${artist.name} | `;
+        }
+        return artist.name;
+      });
+    }
+  }
+
   renderTracks() {
     if (this.props.tracks) {
       const tracks = this.props.tracks.items.map((track) => {
@@ -18,8 +31,12 @@ class SearchResults extends React.Component {
       });
       return x.map((track, index) => {
         return (
-          <div id={index} key={track.id}>
-            {track.name}
+          <div className="playlist-track" id={index} key={track.id}>
+            <img src={track.album.images[1].url} alt={track.name} />
+            <div className="playlist-track-summary">
+              <p>{track.name} </p>
+              <p>{this.mapArtists(track.artists)}</p>
+            </div>
           </div>
         );
       });
@@ -47,7 +64,7 @@ class SearchResults extends React.Component {
     return (
       <React.Fragment>
         <div onClickCapture={this.handlePlaylistClick}>
-          SearchResults: {this.renderTracks()}
+          {this.renderTracks()}
         </div>
         {this.renderAudioPlayer()}
       </React.Fragment>
