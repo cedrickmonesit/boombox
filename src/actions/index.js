@@ -56,7 +56,6 @@ export const getSearchResults = (searchterm, types) => async (dispatch) => {
   const response = await spotifyApi.search(searchterm, types);
 
   dispatch({ type: GET_SEARCH_RESULTS, payload: response });
-  history.push("/search/results");
 };
 
 //action creator

@@ -34,7 +34,6 @@ class Home extends React.Component {
   renderFeaturedPlaylists = () => {};
 
   render() {
-    console.log(this.props.featuredPlaylists, this.props.newReleasesAlbums);
     return <div className="grid-container">{this.renderAlbums()}</div>;
   }
 }

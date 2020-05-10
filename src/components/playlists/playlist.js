@@ -24,6 +24,9 @@ class playlist extends React.Component {
     });
 
     const id = this.props.match.params.id;
+
+    //if id exists
+    //get playlist tracks
     if (id) {
       this.props.getPlaylistTracks(id);
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch, Link } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import { setTokenStatus } from "../actions";
 
@@ -12,7 +12,7 @@ import Playlist from "./playlists/playlist";
 import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
-import Album from "./album/Album";
+import Search from "./search/Search";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -69,6 +69,7 @@ class App extends React.Component {
           <a href="http://localhost:8888"> Login to Spotify </a>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/search" exact component={Search} />
             <Route path="/search/results" exact component={SearchResults} />
             <Route path="/playlists" exact component={UserPlaylists} />
             <Route path="/playlist/:name" exact component={Playlist} />
