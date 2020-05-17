@@ -6,3 +6,49 @@ body {
   margin: 0;
   background-color: #f0a500;
 }
+
+.main {
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 400px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+  }
+  .sidebar {
+    grid-area: sidebar;
+    position: fixed;
+
+    a {
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+  }
+
+  .content {
+    grid-area: content;
+  }
+
+  .header {
+    grid-area: header;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
+
+  .main {
+    margin: 0;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, auto-fit);
+    grid-template-areas:
+      "sidebar header ......"
+      "sidebar content ......"
+      ".......  .......  .......";
+    color: #444;
+  }
+}

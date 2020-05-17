@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FaSearch } from "react-icons/fa";
 
 import { getSearchResults } from "../../actions";
 
@@ -43,9 +42,6 @@ class Searchbar extends React.Component {
           placeholder="search..."
           type="text"
         />
-        <button className="searchbar-button" type="submit">
-          <FaSearch className="icon-search" />
-        </button>
       </form>
     );
   }

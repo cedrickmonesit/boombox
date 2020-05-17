@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, Link } from "react-router-dom";
 
 import { setTokenStatus } from "../actions";
 
@@ -13,6 +13,7 @@ import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
 import Search from "./search/Search";
+import Overlay from "./overlay/Overlay";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -66,15 +67,23 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
-          <a href="http://localhost:8888"> Login to Spotify </a>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/search" exact component={Search} />
-            <Route path="/search/results" exact component={SearchResults} />
-            <Route path="/playlists" exact component={UserPlaylists} />
-            <Route path="/playlist/:name" exact component={Playlist} />
-            <Route path="/album/:id" exact component={Playlist} />
-          </Switch>
+          <div className="header">header</div>
+          <div className="sidebar">
+            <Link to="/">Home</Link>
+            <Link to="/search">Search</Link>
+            <Link to="/playlists">Playlists</Link>
+          </div>
+          <div className="content">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/search" exact component={Search} />
+              <Route path="/search/results" exact component={SearchResults} />
+              <Route path="/playlists" exact component={UserPlaylists} />
+              <Route path="/playlist/:name" exact component={Playlist} />
+              <Route path="/album/:id" exact component={Playlist} />
+            </Switch>
+          </div>
+
           <Navigation />
         </div>
       </HashRouter>

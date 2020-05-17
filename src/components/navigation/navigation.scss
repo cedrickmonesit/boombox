@@ -33,3 +33,47 @@
     }
   }
 }
+
+.main-nav-top {
+  width: 100vw;
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  background: #2c003e;
+  color: #f7f7f7;
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.75rem;
+
+  a {
+    text-decoration: none;
+    color: #f7f7f7;
+  }
+
+  button {
+    font-family: "Josefin Sans", sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 3.5rem;
+    text-align: center;
+    background-color: #f0a500;
+    text-decoration: none;
+    color: #f7f7f7;
+    font-size: 0.8rem;
+  }
+}
+
+.logo {
+  width: 3rem;
+}
+
+//desktop
+@media (min-width: 400px) {
+  .main-nav {
+    display: none;
+  }
+}
