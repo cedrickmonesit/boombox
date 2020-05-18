@@ -29,6 +29,7 @@ body {
   }
 
   .content {
+    width: 60vw;
     grid-area: content;
   }
 
@@ -40,15 +41,26 @@ body {
     grid-area: footer;
   }
 
+  .grid-content {
+    //min-width: 40vw;
+  }
+
   .main {
     margin: 0;
     display: grid;
+    justify-content: center;
     grid-gap: 1rem;
     grid-template-columns: repeat(3, auto-fit);
     grid-template-areas:
       "sidebar header ......"
       "sidebar content ......"
-      ".......  .......  .......";
+      "sidebar content  .......";
     color: #444;
+  }
+}
+
+@media (min-width: 700px) {
+  .main {
+    grid-template-columns: repeat(2, auto-fit);
   }
 }

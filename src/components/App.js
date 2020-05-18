@@ -74,14 +74,16 @@ class App extends React.Component {
             <Link to="/playlists">Playlists</Link>
           </div>
           <div className="content">
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/search" exact component={Search} />
-              <Route path="/search/results" exact component={SearchResults} />
-              <Route path="/playlists" exact component={UserPlaylists} />
-              <Route path="/playlist/:name" exact component={Playlist} />
-              <Route path="/album/:id" exact component={Playlist} />
-            </Switch>
+            <div className="grid-content">
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/search" exact component={Search} />
+                <Route path="/search/results" exact component={SearchResults} />
+                <Route path="/playlists" exact component={UserPlaylists} />
+                <Route path="/playlist/:name" exact component={Playlist} />
+                <Route path="/album/:id" exact component={Playlist} />
+              </Switch>
+            </div>
           </div>
 
           <Navigation />

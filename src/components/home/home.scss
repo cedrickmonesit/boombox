@@ -16,7 +16,13 @@
   width: 10rem;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 800px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 10rem);
+  }
+}
+
+@media (min-width: 1000px) {
   .home-album-img {
     width: 100%;
   }
@@ -27,6 +33,6 @@
       4,
       minmax(auto, 15rem)
     ); //auto fill will leave empty cells
-    grid-template-rows: repeat(auto-fit, minmax(5rem, auto));
+    grid-template-rows: repeat(auto-fit, minmax(1rem, auto));
   }
 }
