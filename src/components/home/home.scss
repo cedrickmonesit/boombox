@@ -31,7 +31,7 @@
     display: grid;
     grid-template-columns: repeat(
       4,
-      minmax(auto, 15rem)
+      minmax(10rem, 15rem)
     ); //auto fill will leave empty cells
     grid-template-rows: repeat(auto-fit, minmax(1rem, auto));
   }

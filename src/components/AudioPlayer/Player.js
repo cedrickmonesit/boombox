@@ -95,22 +95,30 @@ class Player extends React.Component {
     }
   };
 
+  changeLayout = () => {
+    if (window.matchMedia("(max-width: 400px)")) {
+      return "horizontal";
+    } else {
+      return "stacked-reverse";
+    }
+  };
+
   render() {
     return (
       <div>
         <AudioPlayer
           className="audio-player"
           autoPlayAfterSrcChange={true}
-          showSkipControls={false}
-          showJumpControls={false}
-          customVolumeControls={[""]}
-          customAdditionalControls={[""]}
-          defaultCurrentTime={""}
-          defaultDuration={""}
+          showSkipControls={this.props.showSkipControls} //true, false
+          showJumpControls={this.props.showJumpControls} //true, false
+          customVolumeControls={this.props.customVolumeControls} //[""]
+          customAdditionalControls={this.props.customAdditionalControls} //[""]
+          defaultCurrentTime={""} //""
+          defaultDuration={""} //""
           src={this.renderAudioSource()}
           onClickPrevious={this.handleClickPrevious}
           onClickNext={this.handleClickNext}
-          layout={"horizontal"}
+          layout={this.changeLayout()} //horizontal, stacked-reverse
         />
       </div>
     );

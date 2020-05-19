@@ -1,40 +1,8 @@
 .audio-player {
   position: fixed;
-  bottom: 4.9rem;
+  bottom: 0;
+  left: 0;
   background: #2c003e;
-}
-
-.rhap_container {
-  padding: 0.5rem;
-}
-
-.rhap_current-time {
-  display: none;
-}
-
-.rhap_time,
-.rhap_total-time {
-  display: none;
-}
-
-.rhap_progress-container {
-  margin: 0;
-}
-
-.rhap_progress-indicator {
-  display: none;
-}
-
-.rhap_additional-controls {
-  display: none;
-}
-
-.rhap_volume-controls {
-  display: none;
-}
-
-.rhap_controls-section {
-  flex: 0;
 }
 
 .rhap_download-progress {
@@ -54,8 +22,68 @@
   position: relative;
 }
 
-@media (min-width: 400px) {
-  .audio-player {
+@media (max-width: 400px) {
+  .rhap_rewind-button {
     display: none;
+  }
+
+  .rhap_forward-button {
+    display: none;
+  }
+
+  .audio-player {
+    position: fixed;
+    bottom: 4.9rem;
+    background: #2c003e;
+  }
+
+  .rhap_container {
+    padding: 0.5rem;
+  }
+
+  .rhap_current-time {
+    display: none;
+  }
+
+  .rhap_time,
+  .rhap_total-time {
+    display: none;
+  }
+
+  .rhap_progress-container {
+    margin: 0;
+  }
+
+  .rhap_progress-indicator {
+    display: none;
+  }
+
+  .rhap_additional-controls {
+    display: none;
+  }
+
+  .rhap_volume-controls {
+    display: none;
+  }
+
+  .rhap_controls-section {
+    flex: 0;
+  }
+
+  .rhap_download-progress {
+    background: #512b58;
+  }
+
+  .rhap_progress-filled {
+    background: #f7f7f7;
+  }
+
+  //play button
+  .rhap_play-pause-button {
+    color: #f7f7f7;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2.5rem;
+    position: relative;
   }
 }

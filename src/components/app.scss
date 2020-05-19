@@ -18,8 +18,14 @@ body {
     overflow: scroll;
   }
   .sidebar {
+    padding: 0 3%;
+    margin-left: 1rem;
     grid-area: sidebar;
     position: fixed;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    width: 18vw;
+    height: 100vh;
 
     a {
       text-decoration: none;
