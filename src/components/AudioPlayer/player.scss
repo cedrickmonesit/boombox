@@ -1,40 +1,44 @@
 .audio-player {
   position: fixed;
-  bottom: 4.9rem;
+  bottom: 0;
+
+  border-top: 0.1rem solid #f7f7f7;
+
   background: #2c003e;
 }
 
-.rhap_container {
-  padding: 0.5rem;
+.rhap_download-progress {
+  background: #512b58;
+}
+
+.rhap_progress-filled {
+  color: #f7f7f7;
+}
+
+.rhap_forward-button {
+  color: #f7f7f7;
+}
+
+.rhap_rewind-button {
+  color: #f7f7f7;
+}
+
+.rhap_volume-indicator {
+  background: #f0a500;
+}
+
+.rhap_volume-button {
+  color: #f7f7f7;
+}
+
+.rhap_total-time {
+  font-family: "Josefin Sans", sans-serif;
+  color: #f7f7f7;
 }
 
 .rhap_current-time {
-  display: none;
-}
-
-.rhap_time,
-.rhap_total-time {
-  display: none;
-}
-
-.rhap_progress-container {
-  margin: 0;
-}
-
-.rhap_progress-indicator {
-  display: none;
-}
-
-.rhap_additional-controls {
-  display: none;
-}
-
-.rhap_volume-controls {
-  display: none;
-}
-
-.rhap_controls-section {
-  flex: 0;
+  font-family: "Josefin Sans", sans-serif;
+  color: #f7f7f7;
 }
 
 .rhap_download-progress {
@@ -52,4 +56,85 @@
   height: 2.5rem;
   font-size: 2.5rem;
   position: relative;
+}
+
+.rhap_progress-indicator {
+  display: none;
+}
+
+.rhap_repeat-button {
+  color: #f7f7f7;
+}
+
+@media (max-width: 700px) {
+  .rhap_rewind-button {
+    display: none;
+  }
+
+  .rhap_forward-button {
+    display: none;
+  }
+
+  .audio-player {
+    position: fixed;
+    bottom: 4.9rem;
+    background: #2c003e;
+  }
+
+  .rhap_container {
+    padding: 0.5rem;
+  }
+
+  .rhap_current-time {
+    display: none;
+  }
+
+  .rhap_time,
+  .rhap_total-time {
+    display: none;
+  }
+
+  .rhap_progress-container {
+    margin: 0;
+  }
+
+  .rhap_progress-indicator {
+    display: none;
+  }
+
+  .rhap_additional-controls {
+    display: none;
+  }
+
+  .rhap_volume-controls {
+    display: none;
+  }
+
+  .rhap_controls-section {
+    flex: 0;
+  }
+
+  .rhap_download-progress {
+    background: #512b58;
+  }
+
+  .rhap_progress-filled {
+    background: #f7f7f7;
+  }
+
+  //play button
+  .rhap_play-pause-button {
+    color: #f7f7f7;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2.5rem;
+    position: relative;
+  }
+}
+
+@media (min-width: 700px) {
+  .audio-player {
+    right: 20%;
+    width: 60%;
+  }
 }

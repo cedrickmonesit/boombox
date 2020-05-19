@@ -41,3 +41,9 @@
     margin-bottom: 9rem;
   }
 }
+
+@media (min-width: 700px) {
+  .playlist-track:last-of-type {
+    margin-bottom: 4rem;
+  }
+}

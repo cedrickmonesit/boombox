@@ -105,7 +105,7 @@ class playlist extends React.Component {
     //event bubbling capture onclick event and get target id for currentmusicindex
     return (
       <React.Fragment>
-        <div onClickCapture={this.handlePlaylistClick}>
+        <div className="playlist" onClickCapture={this.handlePlaylistClick}>
           {this.renderTracks(this.props.tracks.items)}
         </div>
         <AudioPlayer tracks={this.maptracks(this.props.tracks.items)} />

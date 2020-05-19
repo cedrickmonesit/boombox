@@ -6,3 +6,145 @@ body {
   margin: 0;
   background-color: #f0a500;
 }
+
+.main {
+  margin-top: 3.5rem;
+}
+.main-nav {
+  display: block;
+}
+
+.sidebar {
+  display: none;
+}
+
+.header {
+  display: none;
+}
+
+.right {
+  display: none;
+}
+
+.left {
+  display: none;
+}
+
+@media (min-width: 400px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    background-color: #f0a500;
+  }
+
+  .sidebar {
+    padding: 0 3%;
+    position: fixed;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    width: 18vw;
+    height: 100vh;
+    display: none;
+
+    a {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: #f7f7f7;
+      display: block;
+    }
+  }
+
+  .content {
+    min-height: 100vh;
+    width: 60vw;
+    grid-area: content;
+    background: #f0a500;
+    // border-right: 0.1rem solid #f7f7f7;
+    // border-left: 0.1rem solid #f7f7f7;
+  }
+
+  .header {
+    grid-area: header;
+    display: none;
+    background: #f0a500;
+    // border-right: 0.1rem solid #f7f7f7;
+    // border-left: 0.1rem solid #f7f7f7;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
+
+  .grid-content {
+    //min-width: 40vw;
+  }
+
+  .main {
+    margin: 0;
+    display: grid;
+    justify-content: center;
+    // grid-gap: 1rem;
+    grid-template-columns: repeat(3, auto-fit);
+    grid-template-areas:
+      "left header right"
+      "left content right"
+      "left content  right";
+    color: #444;
+  }
+}
+
+@media (min-width: 600px) {
+  .logo {
+    margin-top: 2rem;
+    width: 5rem;
+  }
+  .main-nav {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "Josefin Sans", sans-serif;
+    color: #f7f7f7;
+    margin-bottom: 1rem;
+
+    a {
+      text-decoration: none;
+      color: #f7f7f7;
+      background: #2c003e;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      margin-top: 1rem;
+    }
+  }
+
+  .sidebar {
+    display: block;
+    background: #2c003e;
+  }
+  .main {
+    grid-template-columns: repeat(2, auto-fit);
+  }
+
+  .right {
+    border-left: 0.1rem solid #f7f7f7;
+    display: block;
+    background: #2c003e;
+    width: 20vw;
+    grid-area: right;
+  }
+
+  .left {
+    border-right: 0.1rem solid #f7f7f7;
+    grid-area: left;
+    display: block;
+    background: #2c003e;
+    width: 20vw;
+  }
+}
