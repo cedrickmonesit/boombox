@@ -16,9 +16,13 @@
   width: 10rem;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
+  .home-album-img {
+    width: 15rem;
+  }
   .grid-container {
-    grid-template-columns: repeat(3, 10rem);
+    grid-template-columns: repeat(auto-fit, 15rem);
+    grid-template-rows: repeat(auto-fit, 15rem);
   }
 }
 

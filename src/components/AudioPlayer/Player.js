@@ -96,7 +96,7 @@ class Player extends React.Component {
   };
 
   changeLayout = () => {
-    if (window.matchMedia("(max-width: 400px)")) {
+    if (window.matchMedia("(max-width: 700px)")) {
       return "horizontal";
     } else {
       return "stacked-reverse";

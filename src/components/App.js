@@ -69,6 +69,7 @@ class App extends React.Component {
         <div className="main">
           <div className="header">
             <h1>Boombox</h1>
+            <a href="http://localhost:8888">Login</a>
           </div>
           <div className="sidebar">
             <img className="logo" src={logo} alt="Boombox logo" />
@@ -88,6 +89,8 @@ class App extends React.Component {
               </Switch>
             </div>
           </div>
+          <div className="right"></div>
+          <div className="left"></div>
 
           <Navigation />
         </div>
