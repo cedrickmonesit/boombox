@@ -10,6 +10,9 @@ body {
 .main {
   margin-top: 3.5rem;
 }
+.main-nav {
+  display: block;
+}
 
 @media (min-width: 400px) {
   body {
@@ -19,7 +22,6 @@ body {
   }
   .sidebar {
     padding: 0 3%;
-    margin-left: 1rem;
     grid-area: sidebar;
     position: fixed;
     font-family: "Josefin Sans", sans-serif;
@@ -28,8 +30,9 @@ body {
     height: 100vh;
 
     a {
+      margin-top: 1rem;
       text-decoration: none;
-      color: white;
+      color: #f7f7f7;
       display: block;
     }
   }
@@ -64,8 +67,38 @@ body {
     color: #444;
   }
 }
+.header {
+  display: none;
+}
+
+.sidebar {
+  display: none;
+}
 
 @media (min-width: 700px) {
+  .logo {
+    margin-top: 3rem;
+    width: 5rem;
+  }
+  .main-nav {
+    display: none;
+  }
+  .header {
+    display: block;
+    font-family: "Josefin Sans", sans-serif;
+    color: #f7f7f7;
+    padding: 1rem 0;
+
+    h1 {
+      margin: 0;
+      margin-top: 1rem;
+    }
+  }
+
+  .sidebar {
+    display: block;
+    background: #2c003e;
+  }
   .main {
     grid-template-columns: repeat(2, auto-fit);
   }

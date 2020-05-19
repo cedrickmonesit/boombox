@@ -13,7 +13,7 @@ import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
 import Search from "./search/Search";
-import Overlay from "./overlay/Overlay";
+import logo from "../images/logo.png";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -67,8 +67,11 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
-          <div className="header">header</div>
+          <div className="header">
+            <h1>Boombox</h1>
+          </div>
           <div className="sidebar">
+            <img className="logo" src={logo} alt="Boombox logo" />
             <Link to="/">Browse</Link>
             <Link to="/search">Search</Link>
             <Link to="/playlists">Playlists</Link>
