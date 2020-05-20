@@ -91,15 +91,7 @@ class Player extends React.Component {
   //this stops the audioplayer from throwing an undefined error at a certain index
   renderAudioSource = () => {
     if (this.state.playlist.length > 0) {
-      return this.state.playlist[this.state.currentMusicIndex].src;
-    }
-  };
-
-  changeLayout = () => {
-    if (window.matchMedia("(max-width: 700px)")) {
-      return "horizontal";
-    } else {
-      return "stacked-reverse";
+      return this.state.playlist[this.state.currentMusicIndex];
     }
   };
 
@@ -107,6 +99,7 @@ class Player extends React.Component {
     return (
       <div>
         <AudioPlayer
+          header={this.renderAudioSource().title}
           className="audio-player"
           autoPlayAfterSrcChange={true}
           showSkipControls={this.props.showSkipControls} //true, false
@@ -115,10 +108,10 @@ class Player extends React.Component {
           customAdditionalControls={this.props.customAdditionalControls} //[""]
           defaultCurrentTime={""} //""
           defaultDuration={""} //""
-          src={this.renderAudioSource()}
+          src={this.renderAudioSource().src}
           onClickPrevious={this.handleClickPrevious}
           onClickNext={this.handleClickNext}
-          layout={this.changeLayout()} //horizontal, stacked-reverse
+          layout={"horizontal"} //horizontal, stacked-reverse
         />
       </div>
     );

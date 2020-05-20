@@ -1,4 +1,9 @@
 .playlist-track {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.25);
+  }
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   display: flex;

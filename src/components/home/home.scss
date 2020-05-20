@@ -13,6 +13,11 @@
 }
 
 .home-album-img {
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    filter: grayscale(100%);
+  }
   width: 10rem;
 }
 

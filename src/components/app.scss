@@ -18,10 +18,13 @@ body {
   display: none;
 }
 
-.header {
+.main-header {
   display: none;
 }
 
+.content {
+  margin-top: 5rem;
+}
 .right {
   display: none;
 }
@@ -64,8 +67,8 @@ body {
     // border-left: 0.1rem solid #f7f7f7;
   }
 
-  .header {
-    grid-area: header;
+  .main-header {
+    // grid-area: header;
     display: none;
     background: #f0a500;
     // border-right: 0.1rem solid #f7f7f7;
@@ -102,25 +105,29 @@ body {
   .main-nav {
     display: none;
   }
-  .header {
+  .main-header {
+    position: fixed;
+    z-index: 10;
+    border-bottom: 0.2rem solid #f7f7f7;
+    padding: 0.5rem;
+    width: 60%;
+    right: 20vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-family: "Josefin Sans", sans-serif;
     color: #f7f7f7;
-    margin-bottom: 1rem;
 
     a {
       text-decoration: none;
       color: #f7f7f7;
       background: #2c003e;
-      padding: 0.5rem;
+      padding: 0.75rem;
       border-radius: 8px;
     }
 
     h1 {
       margin: 0;
-      margin-top: 1rem;
     }
   }
 

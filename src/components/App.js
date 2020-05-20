@@ -67,7 +67,7 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
-          <div className="header">
+          <div className="main-header">
             <h1>Boombox</h1>
             <a href="http://localhost:8888">Login</a>
           </div>
