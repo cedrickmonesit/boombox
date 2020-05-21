@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getUserPlaylists } from "../../actions";
 import "./userplaylist.scss";
@@ -34,7 +35,7 @@ class UserPlaylists extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div> {this.getPlaylists()} </div>
+        <div className="main-playlists">{this.getPlaylists()}</div>
       </React.Fragment>
     );
   }

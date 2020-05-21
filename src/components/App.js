@@ -14,6 +14,7 @@ import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
 import Search from "./search/Search";
 import logo from "../images/logo.png";
+import Artists from "./artists/Artists";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -67,7 +68,7 @@ class App extends React.Component {
     return (
       <HashRouter history={history}>
         <div className="main">
-          <div className="header">
+          <div className="main-header">
             <h1>Boombox</h1>
             <a href="http://localhost:8888">Login</a>
           </div>
@@ -75,9 +76,16 @@ class App extends React.Component {
             <img className="logo" src={logo} alt="Boombox logo" />
             <Link to="/">Browse</Link>
             <Link to="/search">Search</Link>
+
+            <Link to="/artists">Artists</Link>
             <Link to="/playlists">Playlists</Link>
           </div>
           <div className="content">
+            <div className="main-playlists-nav">
+              <Link to="/playlists">Playlists</Link>
+              <Link to="/artists">Artists</Link>
+              <Link to="/albums">Albums</Link>
+            </div>
             <div className="grid-content">
               <Switch>
                 <Route path="/" exact component={Home} />
@@ -86,6 +94,7 @@ class App extends React.Component {
                 <Route path="/playlists" exact component={UserPlaylists} />
                 <Route path="/playlist/:name" exact component={Playlist} />
                 <Route path="/album/:id" exact component={Playlist} />
+                <Route path="/artists" exact component={Artists} />
               </Switch>
             </div>
           </div>

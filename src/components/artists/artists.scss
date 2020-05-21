@@ -1,0 +1,57 @@
+.artist-img {
+  width: 10rem;
+  height: 10rem;
+  transition: all 0.5s ease-in-out;
+
+  border-radius: 10rem;
+  cursor: pointer;
+  filter: contrast(100%);
+
+  &:hover {
+    opacity: 1.5;
+    filter: contrast(125%);
+  }
+}
+
+.artists-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 10rem);
+  grid-template-rows: repeat(auto-fit, 10rem);
+  grid-gap: 2rem;
+  justify-content: center;
+  margin-bottom: 6rem;
+}
+
+.artist-container {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f7f7f7;
+
+  p {
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .artist-container {
+    p {
+      margin-top: 1.5rem;
+    }
+  }
+  .artist-img {
+    width: 15rem;
+    height: 15rem;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .artists-grid-container {
+    grid-template-columns: repeat(auto-fit, 15rem);
+    grid-template-rows: repeat(auto-fit, 18rem);
+    margin-bottom: 2rem;
+  }
+}

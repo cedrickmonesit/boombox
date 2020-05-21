@@ -18,11 +18,13 @@ class Home extends React.Component {
         return album.images.map((image) => {
           return (
             <Link key={album.id} to={`/album/${album.id}`}>
-              <img
+              <div
                 className="home-album-img"
-                src={image.url}
+                style={{
+                  background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${image.url}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
+                }}
                 alt={album.name}
-              />
+              ></div>
             </Link>
           );
         });
