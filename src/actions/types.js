@@ -19,3 +19,6 @@ export const GET_FEATURED_PLAYLISTS = "GET_FEATURED_PLAYLISTS";
 
 //Album
 export const GET_ALBUM_TRACKS = "GET_ALBUM_TRACKS";
+
+//mytopartists
+export const GET_MY_TOP_ARTISTS = "GET_MY_TOP_ARTISTS";

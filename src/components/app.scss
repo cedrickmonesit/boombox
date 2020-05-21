@@ -33,6 +33,23 @@ body {
   display: none;
 }
 
+.main-playlists-nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  a {
+    margin-left: 0.5rem;
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    color: #f7f7f7;
+  }
+}
+
 @media (min-width: 400px) {
   body {
     width: 100vw;
@@ -98,6 +115,9 @@ body {
 }
 
 @media (min-width: 600px) {
+  .main-playlists-nav {
+    display: none;
+  }
   .logo {
     margin-top: 2rem;
     width: 5rem;

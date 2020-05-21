@@ -11,6 +11,7 @@ import {
   GET_NEW_RELEASES,
   GET_FEATURED_PLAYLISTS,
   GET_ALBUM_TRACKS,
+  GET_MY_TOP_ARTISTS,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -78,4 +79,11 @@ export const getAlbumTracks = (id) => async (dispatch) => {
   const response = await spotifyApi.getAlbumTracks(id);
 
   dispatch({ type: GET_ALBUM_TRACKS, payload: response });
+};
+
+//action creator
+export const getMyTopArtists = () => async (dispatch) => {
+  const response = await spotifyApi.getMyTopArtists();
+
+  dispatch({ type: GET_MY_TOP_ARTISTS, payload: response.items });
 };
