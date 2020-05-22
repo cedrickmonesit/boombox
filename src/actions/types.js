@@ -22,3 +22,9 @@ export const GET_ALBUM_TRACKS = "GET_ALBUM_TRACKS";
 
 //mytopartists
 export const GET_MY_TOP_ARTISTS = "GET_MY_TOP_ARTISTS";
+
+//artisttoptracks
+export const GET_ARTIST_TOP_TRACKS = "GET_ARTIST_TOP_TRACKS";
+
+//artist
+export const GET_ARTIST = "GET_ARTIST";

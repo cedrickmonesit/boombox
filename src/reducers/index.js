@@ -27,6 +27,12 @@ import albumReducer from "./album/albumTracksReducer";
 //mytopartists
 import myTopArtistsReducer from "./myTopArtists/myTopArtistsReducer";
 
+//artist top tracks
+import artistTopTracksReducer from "./artistsTopTracks/artistTopTracksReducer";
+
+//artist
+import artistReducer from "./artist/artistReducer";
+
 //take reducer put it inside to combineReducers
 export default combineReducers({
   userPlaylists: userPlaylistsReducer,
@@ -38,4 +44,6 @@ export default combineReducers({
   featuredPlaylists: featuredPlaylistsReducer,
   albumTracks: albumReducer,
   myTopArtists: myTopArtistsReducer,
+  artistTopTracks: artistTopTracksReducer,
+  artist: artistReducer,
 });

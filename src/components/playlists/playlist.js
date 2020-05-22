@@ -10,25 +10,29 @@ import {
 import AudioPlayer from "../AudioPlayer/Player";
 import "./playlist.scss";
 
-class playlist extends React.Component {
+class Playlist extends React.Component {
   componentDidMount() {
-    //id of playlist
-    this.props.getUserPlaylists();
+    if (this.props.match) {
+      const id = this.props.match.params.id;
+      const name = this.props.match.params.name;
 
-    //if the name of playlist matches it will take the matched playlist id and fetch the tracks for the matched playlist
-    this.props.playlists.map((playlist) => {
-      if (playlist.name === this.props.match.params.name) {
-        this.props.getPlaylistTracks(playlist.id);
+      if (name) {
+        //id of playlist
+        this.props.getUserPlaylists();
+
+        //if the name of playlist matches it will take the matched playlist id and fetch the tracks for the matched playlist
+        this.props.playlists.map((playlist) => {
+          if (playlist.name === this.props.match.params.name) {
+            this.props.getPlaylistTracks(playlist.id);
+          }
+          return null;
+        });
       }
-      return null;
-    });
-
-    const id = this.props.match.params.id;
-
-    //if id exists
-    //get playlist tracks
-    if (id) {
-      this.props.getPlaylistTracks(id);
+      //if id exists
+      //get playlist tracks
+      if (id) {
+        this.props.getPlaylistTracks(id);
+      }
     }
   }
 
@@ -96,6 +100,7 @@ class playlist extends React.Component {
   maptracks = (tracks) => {
     if (tracks) {
       return tracks.map((track) => {
+        console.log(track);
         return track.track;
       });
     }
@@ -106,23 +111,26 @@ class playlist extends React.Component {
     return (
       <React.Fragment>
         <div className="playlist" onClickCapture={this.handlePlaylistClick}>
-          {this.renderTracks(this.props.tracks.items)}
+          {this.renderTracks(this.props.tracks)}
         </div>
-        <AudioPlayer tracks={this.maptracks(this.props.tracks.items)} />
+        <AudioPlayer tracks={this.maptracks(this.props.tracks)} />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tracks: state.playlistsTracks,
-    playlists: state.userPlaylists,
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (!ownProps.tracks) {
+    return {
+      tracks: state.playlistsTracks.items,
+      playlists: state.userPlaylists,
+    };
+  }
+  return {};
 };
 
 export default connect(mapStateToProps, {
   getUserPlaylists,
   getPlaylistTracks,
   setCurrentMusicIndex,
-})(playlist);
+})(Playlist);

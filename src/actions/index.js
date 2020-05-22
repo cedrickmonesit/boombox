@@ -12,6 +12,8 @@ import {
   GET_FEATURED_PLAYLISTS,
   GET_ALBUM_TRACKS,
   GET_MY_TOP_ARTISTS,
+  GET_ARTIST_TOP_TRACKS,
+  GET_ARTIST,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -86,4 +88,20 @@ export const getMyTopArtists = () => async (dispatch) => {
   const response = await spotifyApi.getMyTopArtists();
 
   dispatch({ type: GET_MY_TOP_ARTISTS, payload: response.items });
+};
+
+//action creator
+export const getArtistTopTracks = (id) => async (dispatch) => {
+  //artist id and country id
+  const response = await spotifyApi.getArtistTopTracks(id, "US");
+
+  dispatch({ type: GET_ARTIST_TOP_TRACKS, payload: response.tracks });
+};
+
+//action creator
+export const getArtist = (id) => async (dispatch) => {
+  //artist id
+  const response = await spotifyApi.getArtist(id);
+
+  dispatch({ type: GET_ARTIST, payload: response });
 };

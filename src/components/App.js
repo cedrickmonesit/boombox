@@ -8,13 +8,14 @@ import history from "../history";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import UserPlaylists from "./playlists/UserPlaylists";
-import Playlist from "./playlists/playlist";
+import Playlist from "./playlists/Playlist";
 import SearchResults from "./searchresults/SearchResults";
 import Navigation from "./navigation/Navigation";
 import Home from "./home/Home";
 import Search from "./search/Search";
 import logo from "../images/logo.png";
 import Artists from "./artists/Artists";
+import Artist from "./artist/Artist";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -95,6 +96,7 @@ class App extends React.Component {
                 <Route path="/playlist/:name" exact component={Playlist} />
                 <Route path="/album/:id" exact component={Playlist} />
                 <Route path="/artists" exact component={Artists} />
+                <Route path="/artist/:artist_id" exact component={Artist} />
               </Switch>
             </div>
           </div>
