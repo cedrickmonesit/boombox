@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getMyTopArtists } from "../../actions";
 
@@ -15,14 +16,16 @@ class Artists extends React.Component {
       return this.props.artists.map((artist) => {
         return (
           <div className="artist-container" key={artist.id}>
-            <div
-              className="artist-img"
-              style={{
-                background: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${artist.images[1].url}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
-              }}
-              alt={artist.name}
-            ></div>
-            <p>{artist.name}</p>
+            <Link to={`artist/${artist.id}`}>
+              <div
+                className="artist-img"
+                style={{
+                  background: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${artist.images[1].url}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
+                }}
+                alt={artist.name}
+              ></div>
+              <p>{artist.name}</p>
+            </Link>
           </div>
         );
       });
