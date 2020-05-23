@@ -14,6 +14,7 @@ import {
   GET_MY_TOP_ARTISTS,
   GET_ARTIST_TOP_TRACKS,
   GET_ARTIST,
+  GET_MY_SAVED_ALBUMS,
 } from "./types";
 
 const spotifyApi = new SpotifyWebApi();
@@ -104,4 +105,12 @@ export const getArtist = (id) => async (dispatch) => {
   const response = await spotifyApi.getArtist(id);
 
   dispatch({ type: GET_ARTIST, payload: response });
+};
+
+//action creator
+export const getMySavedAlbums = () => async (dispatch) => {
+  //artist id
+  const response = await spotifyApi.getMySavedAlbums();
+
+  dispatch({ type: GET_MY_SAVED_ALBUMS, payload: response });
 };

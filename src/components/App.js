@@ -16,6 +16,7 @@ import Search from "./search/Search";
 import logo from "../images/logo.png";
 import Artists from "./artists/Artists";
 import Artist from "./artist/Artist";
+import Albums from "./albums/Albums";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -77,7 +78,7 @@ class App extends React.Component {
             <img className="logo" src={logo} alt="Boombox logo" />
             <Link to="/">Browse</Link>
             <Link to="/search">Search</Link>
-
+            <Link to="/albums">Albums</Link>
             <Link to="/artists">Artists</Link>
             <Link to="/playlists">Playlists</Link>
           </div>
@@ -97,6 +98,7 @@ class App extends React.Component {
                 <Route path="/album/:id" exact component={Playlist} />
                 <Route path="/artists" exact component={Artists} />
                 <Route path="/artist/:artist_id" exact component={Artist} />
+                <Route path="/albums" exact component={Albums} />
               </Switch>
             </div>
           </div>
