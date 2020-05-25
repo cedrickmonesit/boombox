@@ -5,6 +5,7 @@ import {
   getUserPlaylists,
   getPlaylistTracks,
   setCurrentMusicIndex,
+  getAlbumTracks,
 } from "../../actions";
 
 import AudioPlayer from "../AudioPlayer/Player";
@@ -30,8 +31,9 @@ class Playlist extends React.Component {
       }
       //if id exists
       //get playlist tracks
-      if (id) {
+      else if (id) {
         this.props.getPlaylistTracks(id);
+        //this.props.getAlbumTracks(id);
       }
     }
   }
@@ -63,11 +65,27 @@ class Playlist extends React.Component {
       const y = x.filter((track) => {
         return track != null;
       });
+
+      const renderImages = (track, images) => {
+        if (images) {
+          return <img src={images[1].url} alt={track.name} />;
+        }
+        return null;
+      };
+
+      const doImagesExist = (track) => {
+        if (track.track.album) {
+          return renderImages(track.track, track.track.album.images);
+        } else {
+          return renderImages(track.track, null);
+        }
+      };
+
       //map through the filtered array return track jsx
       return y.map((track, index) => {
         return (
           <div className="playlist-track" id={index} key={track.track.id}>
-            <img src={track.track.album.images[1].url} alt={track.track.name} />
+            {doImagesExist(track)}
             <div className="playlist-track-summary">
               <p>{track.track.name} </p>
               <p>{this.mapArtists(track.track.artists)}</p>
@@ -106,14 +124,37 @@ class Playlist extends React.Component {
     }
   };
 
+  setAlbumTracksorTracks() {
+    /* if (this.props.albumTracks && this.props.match.params.id) {
+      return this.props.albumTracks.map((track) => {
+        return {
+          track: {
+            id: track.id,
+            album: track.album,
+            name: track.name,
+            artists: track.artists,
+            preview_url: track.preview_url,
+          },
+        };
+      });
+    } else*/ if (
+      this.props.tracks ||
+      //(this.props.tracks && this.props.match.params.id) ||
+      (this.props.tracks && this.props.match.params.name)
+    ) {
+      return this.props.tracks;
+    }
+  }
+
   render() {
+    console.log(this.props.tracks);
     //event bubbling capture onclick event and get target id for currentmusicindex
     return (
       <React.Fragment>
         <div className="playlist" onClickCapture={this.handlePlaylistClick}>
-          {this.renderTracks(this.props.tracks)}
+          {this.renderTracks(this.setAlbumTracksorTracks())}
         </div>
-        <AudioPlayer tracks={this.maptracks(this.props.tracks)} />
+        <AudioPlayer tracks={this.maptracks(this.setAlbumTracksorTracks())} />
       </React.Fragment>
     );
   }
@@ -124,6 +165,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
       tracks: state.playlistsTracks.items,
       playlists: state.userPlaylists,
+      albumTracks: state.albumTracks.items,
     };
   }
   return {};
@@ -133,4 +175,5 @@ export default connect(mapStateToProps, {
   getUserPlaylists,
   getPlaylistTracks,
   setCurrentMusicIndex,
+  getAlbumTracks,
 })(Playlist);

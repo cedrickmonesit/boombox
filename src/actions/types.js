@@ -28,3 +28,9 @@ export const GET_ARTIST_TOP_TRACKS = "GET_ARTIST_TOP_TRACKS";
 
 //artist
 export const GET_ARTIST = "GET_ARTIST";
+
+//mysavedalbums
+export const GET_MY_SAVED_ALBUMS = "GET_MY_SAVED_ALBUMS";
+
+//getAlbum
+export const GET_ALBUM = "GET_ALBUM";

@@ -17,7 +17,7 @@ class Home extends React.Component {
       return this.props.newReleasesAlbums.items.map((album) => {
         return album.images.map((image) => {
           return (
-            <Link key={album.id} to={`/album/${album.id}`}>
+            <Link key={album.id} to={`/browse/${album.id}`}>
               <div
                 className="home-album-img"
                 style={{
@@ -33,8 +33,6 @@ class Home extends React.Component {
     return "";
   };
 
-  renderFeaturedPlaylists = () => {};
-
   render() {
     return <div className="grid-container">{this.renderAlbums()}</div>;
   }
@@ -42,6 +40,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    tracks: state.playlistsTracks.items,
     featuredPlaylists: state.featuredPlaylists.playlists,
     newReleasesAlbums: state.newReleasesAlbums.playlists,
   };
