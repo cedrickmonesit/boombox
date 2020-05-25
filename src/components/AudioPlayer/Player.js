@@ -90,14 +90,16 @@ class Player extends React.Component {
   //if audio source is empty return undefined
   //this stops the audioplayer from throwing an undefined error at a certain index
   renderAudioSource = () => {
-    if (this.state.playlist.length > 0) {
-      return this.state.playlist[this.state.currentMusicIndex];
+    if (this.state.playlist) {
+      if (this.state.playlist.length > 0) {
+        return this.state.playlist[this.state.currentMusicIndex];
+      }
     }
   };
 
-  render() {
-    return (
-      <div>
+  renderAudioPlayer = () => {
+    if (this.renderAudioSource()) {
+      return (
         <AudioPlayer
           header={this.renderAudioSource().title}
           className="audio-player"
@@ -113,8 +115,13 @@ class Player extends React.Component {
           onClickNext={this.handleClickNext}
           layout={"horizontal"} //horizontal, stacked-reverse
         />
-      </div>
-    );
+      );
+    }
+    return null;
+  };
+
+  render() {
+    return <React.Fragment>{this.renderAudioPlayer()}</React.Fragment>;
   }
 }
 

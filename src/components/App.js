@@ -17,6 +17,8 @@ import logo from "../images/logo.png";
 import Artists from "./artists/Artists";
 import Artist from "./artist/Artist";
 import Albums from "./albums/Albums";
+import Browse from "./browse/Browse";
+import Album from "./album/Album";
 import "./app.scss";
 
 const spotifyApi = new SpotifyWebApi();
@@ -95,7 +97,9 @@ class App extends React.Component {
                 <Route path="/search/results" exact component={SearchResults} />
                 <Route path="/playlists" exact component={UserPlaylists} />
                 <Route path="/playlist/:name" exact component={Playlist} />
-                <Route path="/album/:id" exact component={Playlist} />
+                <Route path="/album/:id" exact component={Album} />
+                <Route path="/user/album/:id" exact component={Playlist} />
+                <Route path="/browse/:id" exact component={Browse} />
                 <Route path="/artists" exact component={Artists} />
                 <Route path="/artist/:artist_id" exact component={Artist} />
                 <Route path="/albums" exact component={Albums} />

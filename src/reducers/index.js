@@ -35,6 +35,7 @@ import artistReducer from "./artist/artistReducer";
 
 //albums
 import albumsReducer from "./albums/albumsReducer";
+import getAlbumReducer from "./getAlbum/getAlbumReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -50,4 +51,5 @@ export default combineReducers({
   artistTopTracks: artistTopTracksReducer,
   artist: artistReducer,
   albums: albumsReducer,
+  album: getAlbumReducer,
 });

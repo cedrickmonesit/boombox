@@ -32,7 +32,7 @@ class Artist extends React.Component {
             id: track.id,
             album: track.album,
             name: track.name,
-            artist: track.artists,
+            artists: track.artists,
             preview_url: track.preview_url,
           },
         };
@@ -69,7 +69,15 @@ class Artist extends React.Component {
     if (this.props.artist.images) {
       return (
         <div className="artist-top-tracks">
-          <Playlist tracks={this.mapTracks()} />
+          <Playlist
+            tracks={this.mapTracks()}
+            id={() => {
+              if (this.props.match.params.id) {
+                return this.props.match.params.id;
+              }
+              return null;
+            }}
+          />
         </div>
       );
     }
