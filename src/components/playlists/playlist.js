@@ -125,23 +125,7 @@ class Playlist extends React.Component {
   };
 
   setAlbumTracksorTracks() {
-    /* if (this.props.albumTracks && this.props.match.params.id) {
-      return this.props.albumTracks.map((track) => {
-        return {
-          track: {
-            id: track.id,
-            album: track.album,
-            name: track.name,
-            artists: track.artists,
-            preview_url: track.preview_url,
-          },
-        };
-      });
-    } else*/ if (
-      this.props.tracks ||
-      //(this.props.tracks && this.props.match.params.id) ||
-      (this.props.tracks && this.props.match.params.name)
-    ) {
+    if (this.props.tracks) {
       return this.props.tracks;
     }
   }
