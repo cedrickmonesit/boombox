@@ -74,7 +74,7 @@ class App extends React.Component {
         <div className="main">
           <div className="main-header">
             <h1>Boombox</h1>
-            <a href="http://localhost:8888">Login</a>
+            <a href="https://shrouded-reef-81516.herokuapp.com/">Login</a>
           </div>
           <div className="sidebar">
             <img className="logo" src={logo} alt="Boombox logo" />
